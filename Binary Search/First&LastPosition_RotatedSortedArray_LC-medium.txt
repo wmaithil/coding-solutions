@@ -1,0 +1,38 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var searchRange = function(nums, target) {
+    let ansArr=[-1,-1];
+    
+    ansArr[0]= searchTarget(nums, target,findFirst =true);
+    if(ansArr[0] !== -1){
+        ansArr[1] = searchTarget(nums, target,findFirst = false);
+    }
+    
+    return ansArr;
+};
+
+const searchTarget = function(nums, target, findFirst) {
+    let ans= -1;
+    let start=0;
+    let end= nums.length-1;
+    while(start<=end){
+        let mid = start + Math.floor((end-start)/2);
+        if(nums[mid] > target){
+            end=mid-1;
+        }else if(nums[mid] < target){
+            start= mid+1;
+        }else{
+            ans= mid;
+            if(findFirst){
+                end = mid-1;
+            }else{
+                start = mid +1;
+            }
+        }
+        
+    }
+    return ans;
+};
