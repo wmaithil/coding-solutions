@@ -13,7 +13,7 @@ var splitArray = function(nums, m) {
     while(minsum < maxsum){
         let sum=0;
         let pieces=1;
-        let mid= minsum + Math.floor((maxsum-minsum)/2);
+        let mid= Math.floor((maxsum+minsum)/2);
         for(let i=0;i<nums.length;i++){
             if(sum+nums[i]> mid){
                 pieces+=1;
