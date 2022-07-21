@@ -1,0 +1,21 @@
+function minCost(n,cost, dp){
+    if(n===0){
+        return cost[0];
+    }
+    if(n===1){
+        return cost[1];
+    }
+    if(dp[n]!== -1){
+        return dp[n];
+    }
+    
+    dp[n] = cost[n] + Math.min(minCost(n-1,cost,dp),minCost(n-2,cost,dp));
+    return dp[n];
+    
+};
+
+var minCostClimbingStairs = function(cost) {
+    let n = cost.length;
+    let dp = new Array(n+1).fill(-1);
+    return  Math.min(minCost(n-1,cost,dp),minCost(n-2,cost,dp));
+};
